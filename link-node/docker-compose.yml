@@ -1,0 +1,29 @@
+version: '3'
+services:
+  chainlink:
+    image: smartcontract/chainlink:1.5.1-root
+    container_name: chainlink
+    restart: unless-stopped
+    ports:
+      - "6688:6688"
+    env_file:
+      - ./var.env
+      
+     
+    volumes:
+      - /home/femiadebimpe/.chainlink:/chainlink
+
+    
+    network_mode: "host"
+   
+    stop_signal: SIGINT
+    stop_grace_period: 2m
+    command: [ "local", "n", "-p",  "/chainlink/.password", "-a", "/chainlink/.api"]
+  
+    
+    logging:
+      driver: "json-file"
+      options: 
+        max-size: "2m"
+        max-file: "10"
+  

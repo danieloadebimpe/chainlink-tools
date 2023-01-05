@@ -1,0 +1,15 @@
+org: danieloadebimpe
+app: serverless
+service: pi-temp-sensor
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  timeout: 30
+
+functions:
+  adapter:
+    handler: index.handler
+    events:
+      - httpApi: '*'

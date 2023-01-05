@@ -1,0 +1,14 @@
+org: danieloadebimpe
+app: serverless
+service: trust-token
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+functions:
+  adapter:
+    handler: index.handler
+    events:
+      - httpApi: '*'

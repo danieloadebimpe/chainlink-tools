@@ -1,0 +1,33 @@
+org: danieloadebimpe
+app: serverless
+service: "trust-token-mock2"
+
+frameworkVersion: '3'
+
+custom:
+  wsgi:
+    app: main.app
+
+  pythonRequirements:
+    pythonBin: python3
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  api:
+    handler: wsgi_handler.handler
+    events:
+      - httpApi: '*'
+
+plugins:
+  - serverless-wsgi
+  - serverless-python-requirements
+
+
+
+
+
+
+
